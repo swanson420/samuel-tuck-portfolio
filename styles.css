@@ -323,6 +323,39 @@ figcaption { font-family: var(--mono); font-size: .75rem; color: var(--muted); t
 .goal-first { margin-top: 20px; color: var(--text-2); font-size: 1.1rem; max-width: 40em; padding-left: 16px; border-left: 3px solid var(--hot); }
 .goal-first b { color: var(--text); }
 
+/* Case-study pages */
+.case-main { padding: 104px 0 80px; }
+.case-wrap { max-width: 920px; }
+.back { font-family: var(--mono); font-size: .85rem; color: var(--muted); }
+.back:hover { color: var(--hot-2); }
+.case-head { margin: 28px 0 8px; }
+.case-title { font-size: clamp(2.8rem, 9vw, 5rem); letter-spacing: -.045em; line-height: 1; margin: 6px 0 12px; }
+.case-head .lede { margin-bottom: 24px; }
+.case-note { margin-top: 20px; color: var(--muted); font-size: .92rem; max-width: 46em; }
+.case-note b { color: var(--text-2); }
+.case-sec { margin-top: 64px; }
+.case-sec h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 16px; }
+.case-p { color: var(--text-2); font-size: 1.08rem; max-width: 44em; }
+.case-p em { color: var(--text); }
+.inline { color: var(--hot-2); text-decoration: underline; text-underline-offset: 3px; }
+.shot { margin-top: 32px; }
+.shot figcaption { text-transform: none; letter-spacing: 0; font-family: var(--sans); font-size: 1rem; color: var(--text-2); margin-bottom: 12px; }
+.shot figcaption b { color: var(--text); }
+.shot img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 12px; }
+.shot-phone { display: grid; gap: 20px; align-items: center; }
+.shot-phone img { max-width: 280px; }
+@media (min-width: 720px) { .shot-phone { grid-template-columns: 280px 1fr; } }
+.case .pipeline { margin-bottom: 24px; }
+.table-wrap { overflow-x: auto; }
+.case-table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.case-table th, .case-table td { text-align: left; vertical-align: top; padding: 12px 14px; border-top: 1px solid var(--line); }
+.case-table th { font-weight: 500; white-space: nowrap; color: var(--text); width: 1%; }
+.case-table td { color: var(--text-2); }
+@media (max-width: 560px) { .case-table th { white-space: normal; width: 34%; } }
+.case-end { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.stacks { margin-top: 28px; color: var(--text-2); font-size: .95rem; }
+.stacks .bugs-title { display: block; margin-bottom: 8px; }
+
 /* Reveal */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.in { opacity: 1; transform: none; }

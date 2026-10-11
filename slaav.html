@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLAav | Samuel Tuck</title>
+  <meta name="description" content="SLAav: a tamper-evident SLA authority layer for support teams. How it works and how it is verified.">
+  <meta name="theme-color" content="#0b0908">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="case">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header scrolled" id="siteHeader">
+    <div class="container nav">
+      <a href="index.html" class="logo">ST<span class="ember">_</span></a>
+      <nav class="nav-menu" id="navMenu" aria-label="Primary">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#method">Goggles &amp; Lens</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#contact" class="nav-cta">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="case-main">
+    <div class="container case-wrap">
+      <a class="back" href="index.html#work">← All work</a>
+
+      <header class="case-head">
+        <div class="feature-head">
+          <span class="tag tag-live"><span class="dot"></span> Deployed</span>
+          <span class="tag">Backend MVP</span>
+          <span class="tag">Python · FastAPI · Postgres</span>
+        </div>
+        <h1 class="case-title">SLAav</h1>
+        <p class="lede">An SLA authority layer for Zendesk-style support teams.</p>
+        <p class="case-note"><b>Status:</b> backend MVP, deployed behind an API key. It builds and its full test suite passes. The finance and operations views are API endpoints for now; the screens come next, once the core has proven itself. The source code is private, and a walkthrough is available on request.</p>
+      </header>
+
+      <section class="case-sec">
+        <p class="case-p">When a support SLA is breached, someone pays, and the ticketing platform's own logs can be edited after the fact. SLAav keeps an independent, tamper-evident record of every SLA event. It works out <em>why</em> each breach happened, routes a fix, and gives finance and operations a dollar figure they can defend.</p>
+      </section>
+
+      <section class="case-sec">
+        <h2>How it works</h2>
+        <figure class="pipeline">
+          <ol>
+            <li><span>01</span>Validate<em>bad data goes to quarantine, never &ldquo;fixed&rdquo;</em></li>
+            <li><span>02</span>Record<em>append-only ledger, HMAC-SHA256 chain</em></li>
+            <li><span>03</span>Diagnose<em>one of five root causes</em></li>
+            <li><span>04</span>Intervene<em>corrective action + priority</em></li>
+            <li><span>05</span>Report<em>CFO / COO views, per-ticket certificates</em></li>
+          </ol>
+        </figure>
+        <div class="table-wrap">
+          <table class="case-table">
+            <tr><th>Append-only ledger</th><td>A Postgres ledger with an immutability trigger. Any attempt to edit or delete history is rejected by the database itself.</td></tr>
+            <tr><th>Keyed hash chain</th><td>Every entry is linked to the one before it with HMAC-SHA256. Forging an entry requires the signing key.</td></tr>
+            <tr><th>Root-cause routing</th><td>Pending State Abuse, Routing Ping-Pong, Triage Delay, Agent Timeout, or System Unavailable</td></tr>
+            <tr><th>CFO view (API)</th><td>Active breaches, total financial exposure, and breakdowns by severity and root cause</td></tr>
+            <tr><th>COO view (API)</th><td>Operational attribution, time spent in pending, and triage completion</td></tr>
+            <tr><th>Certificates</th><td>Per-ticket cryptographic proof of the ledger's state</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-sec">
+        <h2>How it's verified</h2>
+        <ul class="proof">
+          <li><b>193 tests</b> run in CI against a live Postgres database, not mocks.</li>
+          <li><b>The hash chain is checked independently.</b> A test recomputes each HMAC from scratch and requires an exact match with the stored hash.</li>
+          <li><b>14 adversarial ingestion tests.</b> Malformed or hostile data goes to quarantine and is never quietly &ldquo;fixed up.&rdquo;</li>
+          <li><b>Load tested against real production, three times.</b> Database pool use peaked at 90% and 75% under normal settings without tripping the circuit breaker. A third session shrank the pool on purpose to force the breaker open, which confirmed that it degrades gracefully and recovers as designed.</li>
+          <li><b>Every claim is pinned to a commit and a CI run</b> in an evidence package.</li>
+        </ul>
+      </section>
+
+      <section class="case-sec">
+        <h2>Limits, stated openly</h2>
+        <p class="case-p">Not yet claimed: a production scheduler, an automated repeatable load-test suite, a key-rotation drill, a Bitcoin-confirmed timestamp anchor, a public third-party proof endpoint, or multi-instance high availability.</p>
+        <blockquote class="motto">&ldquo;Claims track commits and CI runs, not intent.&rdquo;</blockquote>
+      </section>
+
+      <div class="case-end">
+        <a class="back" href="index.html#work">← Back to all work</a>
+        <a class="btn btn-ghost btn-sm" href="index.html#contact">Get in touch</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Samuel Tuck</span>
+      <span class="mono">Static HTML, CSS and JS. No framework.</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
