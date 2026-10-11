@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Reveal-on-scroll + stats + pipeline lighting
-  const revealTargets = document.querySelectorAll('.feature, .card, .step, .timeline li, .stat, .motto');
+  const revealTargets = document.querySelectorAll('.feature, .card, .step, .timeline li, .stat, .motto, .gl-layer');
   revealTargets.forEach((el) => el.classList.add('reveal'));
 
   if (!('IntersectionObserver' in window)) {

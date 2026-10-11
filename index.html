@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samuel Tuck | Systems Builder</title>
-  <meta name="description" content="Samuel Tuck designs systems and directs AI to build them, then makes them prove they work. Flagship: MERCYZERO, a deterministic security-testing platform.">
-  <meta property="og:title" content="Samuel Tuck | Systems Builder">
-  <meta property="og:description" content="I design the system, direct AI to build it, and make it prove it works. 1,000+ tests. Every claim tied to a commit.">
+  <title>Samuel Tuck | AI Evaluation &amp; QA</title>
+  <meta name="description" content="Samuel Tuck: AI evaluation and QA tester, creator of the Goggles &amp; Lens prompting method, and former multi-location general manager. Flagship: MERCYZERO, a live security-testing web app.">
+  <meta property="og:title" content="Samuel Tuck | AI Evaluation &amp; QA">
+  <meta property="og:description" content="I direct AI to build software, then prove it works. ~1,000 tests on the flagship. No claim accepted without proof.">
   <meta name="theme-color" content="#0b0908">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
       <a href="#top" class="logo">ST<span class="ember">_</span></a>
       <nav class="nav-menu" id="navMenu" aria-label="Primary">
         <a href="#work">Work</a>
-        <a href="#method">Method</a>
+        <a href="#method">Goggles &amp; Lens</a>
         <a href="#experience">Experience</a>
         <a href="#contact" class="nav-cta">Contact</a>
       </nav>
@@ -37,15 +37,16 @@
       <div class="glow" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow"><span class="dot"></span> Building in public, shipping on green CI</p>
+          <p class="eyebrow"><span class="dot"></span> AI Evaluation &amp; QA · Open to remote</p>
           <h1>I don't prompt.<br><span class="hot">I direct.</span></h1>
           <p class="lede">
-            I'm Samuel Tuck. I design the system, set the rules, and direct AI agents to build it.
-            Then I make it prove it works: tests, CI gates, and evidence tied to a commit.
+            I'm Samuel Tuck. I build software by steering AI with my own prompting method,
+            <b>Goggles &amp; Lens</b>. Then I test it like a user would, ask the questions that expose
+            what's broken, and don't accept a claim without proof.
           </p>
           <div class="cta-row">
             <a href="#mercyzero" class="btn btn-hot">See MERCYZERO</a>
-            <a href="#contact" class="btn btn-ghost">Get in touch</a>
+            <a href="#method" class="btn btn-ghost">How I prompt</a>
           </div>
         </div>
 
@@ -68,9 +69,9 @@ $ run --seed 0x5eed --check cors
 
       <div class="container"><div class="stats" id="stats">
         <div class="stat"><b data-count="1004">1,004</b><span>tests on the flagship</span></div>
-        <div class="stat"><b data-count="12">12</b><span>workspaces, one adjudicator</span></div>
-        <div class="stat"><b data-count="42" data-suffix="k">42k</b><span>lines of strict TypeScript</span></div>
-        <div class="stat"><b data-count="193">193</b><span>CI tests on SLAav, live Postgres</span></div>
+                <div class="stat"><b data-count="12" data-suffix=" yrs">12 yrs</b><span>high-volume operations</span></div>
+        <div class="stat"><b data-count="193">193</b><span>CI tests on SLAav</span></div>
+        <div class="stat"><b data-count="50">50</b><span>crew hired &amp; trained for a new store</span></div>
       </div></div>
     </section>
 
@@ -84,10 +85,11 @@ $ run --seed 0x5eed --check cors
         <article class="feature" id="mercyzero">
           <div class="feature-head">
             <span class="tag tag-hot">Flagship</span>
+            <span class="tag tag-live"><span class="dot"></span> Deployed</span>
             <span class="tag">TypeScript · Node · Postgres · Fastify</span>
           </div>
           <h3 class="feature-title">MERCYZERO</h3>
-          <p class="feature-sub">A deterministic security-testing and evidence platform.</p>
+          <p class="feature-sub">A live security-testing web app, built by directing AI and verified like a QA lead would.</p>
 
           <div class="feature-grid">
             <div>
@@ -98,14 +100,15 @@ $ run --seed 0x5eed --check cors
                 request that still breaks, fingerprints it, and seals everything into a content-hashed digest.
               </p>
               <p>
-                It ships with a Fastify API, a button-only web console, a public demo mode that can't touch a
-                live system, and a separate chaos harness on Neon database branches.
+                I built it mainly through conversational AI guided by Goggles &amp; Lens, with AI agents
+                handling a small share of the implementation. It has a mobile-friendly console, a Postgres
+                database, and automatic deploys that only happen when every test passes.
               </p>
               <ul class="proof">
                 <li><b>1,004</b> tests: 999 pass, 0 fail, 5 run in the database gate</li>
                 <li><b>Architecture is enforced in CI.</b> Forbidden imports between modules fail the build.</li>
                 <li><b>Deploys only on green.</b> Railway ships <code>main</code> only after the full gate passes.</li>
-                <li><b>Open issues are public.</b> Residual risks live in <code>ISSUES.md</code>, not in a drawer.</li>
+                <li><b>Real-browser tests on every screen.</b> A headless Chromium run drives the whole console.</li>
               </ul>
             </div>
 
@@ -123,7 +126,17 @@ $ run --seed 0x5eed --check cors
             </figure>
           </div>
 
+          <div class="bugs">
+            <p class="bugs-title">Defects I caught by using it like a real user</p>
+            <div class="bug-grid">
+              <div class="bug"><span class="sev sev-high">HIGH</span><h4>A check could change data on the sites it tested</h4><p>A security tool must never modify its target. Found in live use and driven to a verified fix.</p></div>
+              <div class="bug"><span class="sev">MED</span><h4>The report feature never worked</h4><p>It had never produced a working report. Found by using it, then fixed and verified.</p></div>
+              <div class="bug"><span class="sev sev-low">DOC</span><h4>Docs didn't match the app</h4><p>Caught documentation describing behavior the app didn't have, and had it corrected.</p></div>
+            </div>
+          </div>
+
           <div class="feature-foot">
+            <a class="link" href="https://mercyzero-app-production.up.railway.app" target="_blank" rel="noopener">Live app →</a>
             <a class="link" href="https://github.com/swanson420/MERCYZERO" target="_blank" rel="noopener">Source on GitHub →</a>
           </div>
         </article>
@@ -172,7 +185,7 @@ $ run --seed 0x5eed --check cors
         <div class="cards">
           <article class="card">
             <div class="card-top"><h3>Cort3x</h3><span class="tag">Hackathon · Aug 2026</span></div>
-            <p>A safety harness for AI agents. Six modules catch false, stale, or tampered context before an agent acts. Built for the DataHub Agent Hackathon.</p>
+            <p>A safety framework for AI agents: six modules for pre-action request checks, audit trails, and policy enforcement. Built for Devpost's "Build with DataHub" hackathon, with real test results and unfinished items listed openly.</p>
             <p class="mono">Python · TypeScript · C++ · OPA</p>
           </article>
           <article class="card">
@@ -193,37 +206,62 @@ $ run --seed 0x5eed --check cors
     <section class="section section-dark" id="method">
       <div class="container">
         <p class="kicker">02 / Method</p>
-        <h2>How I build with AI</h2>
+        <h2>Goggles <span class="hot">&amp;</span> Lens</h2>
         <p class="section-lede">
-          Prompting asks for an answer. Directing sets up a system where the wrong answer can't ship.
-          This is the loop behind every project above.
+          My own two-layer prompting method. Instead of rewriting a giant prompt every time, I set two
+          layers that stay on until I change them. It keeps the AI's output consistent and accountable
+          from architecture through testing and review.
         </p>
 
+        <div class="gl">
+          <div class="gl-layer">
+            <span class="gl-tag">Layer 1</span>
+            <h3>Goggles</h3>
+            <p>Set the <b>field</b>: the expertise, methods, priorities, and standards the AI works to.</p>
+            <code>GOGGLES: security QA engineer</code>
+          </div>
+          <div class="gl-op" aria-hidden="true">+</div>
+          <div class="gl-layer">
+            <span class="gl-tag">Layer 2</span>
+            <h3>Lens</h3>
+            <p>Set the <b>perspective</b>: how it reasons, what it focuses on, and what it puts first.</p>
+            <code>LENS: adversarial, assume it's broken</code>
+          </div>
+          <div class="gl-op" aria-hidden="true">=</div>
+          <div class="gl-layer gl-out">
+            <span class="gl-tag">Result</span>
+            <h3>Steered output</h3>
+            <p>A focused reviewer that hunts for real defects, and stays that way until the layers change.</p>
+            <code>persists across the session</code>
+          </div>
+        </div>
+
+        <h3 class="sub-h">The loop I run on every project</h3>
         <div class="steps">
           <div class="step">
             <span class="step-n">01</span>
-            <h3>Spec the system</h3>
-            <p>I write the architecture, the module boundaries, and the forbidden dependencies before any code exists.</p>
+            <h3>Write the requirements</h3>
+            <p>Clear, testable requirements first, so there's something to hold the output to.</p>
           </div>
           <div class="step">
             <span class="step-n">02</span>
-            <h3>Gates before features</h3>
-            <p>CI checks for architecture, contracts, lockfiles, and tests. Agents work inside rails they can't skip.</p>
+            <h3>Steer the build</h3>
+            <p>Goggles &amp; Lens set who the AI is and how it thinks. AI agents take a small, scoped share.</p>
           </div>
           <div class="step">
             <span class="step-n">03</span>
-            <h3>Direct the agents</h3>
-            <p>I assign scoped work to AI agents and review every diff against the spec, not against good intentions.</p>
+            <h3>Evaluate against instructions</h3>
+            <p>I check every result against what was asked, not against how confident the AI sounds.</p>
           </div>
           <div class="step">
             <span class="step-n">04</span>
-            <h3>Attack my own work</h3>
-            <p>Adversarial tests and independent verification. If the system says it's correct, a second path checks.</p>
+            <h3>Use it like a user</h3>
+            <p>Click every screen on the live app and ask the questions that expose what's broken.</p>
           </div>
           <div class="step">
             <span class="step-n">05</span>
-            <h3>Ship evidence</h3>
-            <p>Claims point to commits and CI runs. Known gaps are written down. Nothing gets waved through.</p>
+            <h3>Require proof</h3>
+            <p>Nothing ships unless every test passes. Unfinished items get listed openly.</p>
           </div>
         </div>
 
@@ -231,31 +269,54 @@ $ run --seed 0x5eed --check cors
       </div>
     </section>
 
-    <!-- EXPERIENCE (fill from resume) -->
+    <!-- EXPERIENCE -->
     <section class="section" id="experience">
       <div class="container">
         <p class="kicker">03 / Experience</p>
-        <h2>Background</h2>
+        <h2>12 years of running things that can't break</h2>
         <div class="exp-grid">
           <div>
             <p class="section-lede">
-              I came to software from electronics engineering, and I think about code the way I'd think about a
-              circuit: clear boundaries, known failure modes, and a test for every claim.
+              Before software, I ran high-volume restaurants: staffing, food cost, inventory, broken equipment,
+              and a line out the door. That's where I learned to troubleshoot from the root cause, train people
+              fast, and trust numbers over stories. I bring the same habits to testing AI-built software.
             </p>
             <div class="skills">
-              <span>System architecture</span><span>AI agent orchestration</span><span>TypeScript</span>
-              <span>Python</span><span>Postgres</span><span>FastAPI</span><span>Fastify</span>
-              <span>CI/CD gating</span><span>Security testing</span><span>Railway</span><span>Neon</span>
-              <span>Playwright</span>
+              <span>Testing &amp; verification</span><span>Defect finding &amp; reporting</span>
+              <span>Evaluating AI output</span><span>Prompt engineering</span><span>Writing requirements</span>
+              <span>Directing AI to build software</span><span>Root-cause troubleshooting</span>
+              <span>Training &amp; coaching</span><span>Operations management</span>
+            </div>
+            <div class="edu">
+              <p class="bugs-title">Education &amp; certifications</p>
+              <ul>
+                <li><b>ITT Technical Institute</b>: Computer &amp; Electrical Engineering Technology, 3.79 GPA. Microcontrollers, logic circuits, Arduino capstone.</li>
+                <li><b>Food-Safety Manager</b> certification</li>
+                <li><b>Commercial Learner's Permit</b> (CDL), Missouri, 2026</li>
+              </ul>
             </div>
           </div>
           <ol class="timeline" id="timeline">
             <li>
               <time>2026</time>
-              <h3>Independent systems builder</h3>
-              <p>Designed and shipped MERCYZERO, SLAav, Cort3x, and FIREDSQUARED by directing AI agents under CI-enforced specs.</p>
+              <h3>AI Evaluation &amp; QA, self-directed</h3>
+              <p>Designed Goggles &amp; Lens and used it to steer AI through three projects. Shipped MERCYZERO live with ~1,000 automated tests, and found real defects by using it as a user would.</p>
             </li>
-            <!-- Resume entries go here -->
+            <li>
+              <time>2019 – 2023</time>
+              <h3>General Manager, Sonic Drive-In</h3>
+              <p>Corning AR · Cuba MO · Springfield MO. Ran staffing, labor, food cost, inventory and profitability across multiple locations. Opened a new-build store, hired and trained a crew of up to 50, and redesigned the kitchen flow for speed. Kept inventory variance under 1%. Diagnosed equipment faults from manuals, schematics and wiring diagrams.</p>
+            </li>
+            <li>
+              <time>2011 – 2019</time>
+              <h3>Shift Leader → Co-Manager, Sonic &amp; Hardee's</h3>
+              <p>Buffalo &amp; Springfield MO. Promoted from carhop (200+ orders a day) into management. Trained staff through POS system changes.</p>
+            </li>
+            <li>
+              <time>Independent</time>
+              <h3>Delivery, Uber &amp; Grubhub</h3>
+              <p>About 3,000 to 4,000 deliveries and Uber Diamond status. Treated routing and scheduling as an optimization problem.</p>
+            </li>
           </ol>
         </div>
       </div>
@@ -266,12 +327,11 @@ $ run --seed 0x5eed --check cors
       <div class="glow glow-low" aria-hidden="true"></div>
       <div class="container contact-inner">
         <p class="kicker">04 / Contact</p>
-        <h2>Have a system that needs to be <span class="hot">provably right</span>?</h2>
-        <p class="section-lede">I'm open to roles and projects in AI-directed engineering, security tooling, and verification-heavy backends.</p>
+        <h2>Need someone who won't take <span class="hot">"it works"</span> for an answer?</h2>
+        <p class="section-lede">I'm looking for remote roles in AI evaluation, QA testing, and prompt design. Based in Springfield, MO.</p>
         <div class="cta-row center">
-          <a class="btn btn-hot" href="https://github.com/swanson420" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-ghost" href="#" data-todo="linkedin">LinkedIn</a>
-          <a class="btn btn-ghost" href="#" data-todo="email">Email</a>
+          <a class="btn btn-hot" href="mailto:samtuck54@gmail.com">samtuck54@gmail.com</a>
+          <a class="btn btn-ghost" href="https://github.com/swanson420" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
