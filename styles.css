@@ -10,6 +10,8 @@
   --hot-2: #ffb02e;
   --ok: #3ddc84;
   --bad: #ff5a5a;
+  --cool: #3fc8c4;
+  --cool-2: #7fb8ff;
   --grad: linear-gradient(100deg, var(--hot) 0%, var(--hot-2) 100%);
   --sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -356,6 +358,24 @@ figcaption { font-family: var(--mono); font-size: .75rem; color: var(--muted); t
 .case-end { margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
 .stacks { margin-top: 28px; color: var(--text-2); font-size: .95rem; }
 .stacks .bugs-title { display: block; margin-bottom: 8px; }
+
+/* Experience tracks */
+.tracks { display: grid; gap: 20px; margin-top: 40px; }
+@media (min-width: 960px) { .tracks { grid-template-columns: 1fr 1fr; } }
+.track { --accent: var(--hot); --accent-2: var(--hot-2); border: 1px solid var(--line); border-top: 3px solid var(--accent); border-radius: var(--radius); padding: clamp(20px, 3vw, 32px); background: radial-gradient(500px 220px at 0% 0%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%), var(--bg-2); min-width: 0; }
+.track-ops { --accent: var(--cool); --accent-2: var(--cool-2); }
+.track-label { font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.track-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 28px; }
+.track-stats div { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+.track-stats b { display: block; font-size: clamp(1.3rem, 3vw, 1.7rem); letter-spacing: -.03em; color: var(--text); }
+.track-stats span { font-size: .78rem; color: var(--muted); line-height: 1.3; display: block; }
+.track .timeline { border-left-color: color-mix(in srgb, var(--accent) 35%, var(--line)); }
+.track .timeline li::before { border-color: var(--accent); }
+.track .timeline time { color: var(--accent-2); }
+.track .where { font-family: var(--mono); font-size: .78rem; color: var(--muted); margin: -2px 0 6px; }
+.track .skills { margin-top: 28px; }
+.track .skills span { border-color: color-mix(in srgb, var(--accent) 30%, var(--line)); }
+.edu-wide { margin-top: 28px; padding: 24px clamp(20px, 3vw, 32px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); }
 
 /* Reveal */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
