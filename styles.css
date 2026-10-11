@@ -150,7 +150,8 @@ h1 { font-size: clamp(2.8rem, 8vw, 5.6rem); line-height: .98; letter-spacing: -.
   position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
   margin-top: 72px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
 }
-@media (min-width: 720px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+.stats .stat:last-child:nth-child(odd) { grid-column: span 2; }
+@media (min-width: 960px) { .stats { grid-template-columns: repeat(5, 1fr); } .stats .stat:last-child:nth-child(odd) { grid-column: auto; } }
 .stat { background: var(--bg); padding: 24px 20px; }
 .stat b { display: block; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -.03em; font-weight: 700; }
 .stat span { font-size: .85rem; color: var(--muted); }
