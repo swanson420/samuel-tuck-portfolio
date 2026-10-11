@@ -1,259 +1,289 @@
-<!-- FILE 2: index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Samuel Tuck | Portfolio</title>
+  <title>Samuel Tuck | Systems Builder</title>
+  <meta name="description" content="Samuel Tuck designs systems and directs AI to build them, then makes them prove they work. Flagship: MERCYZERO, a deterministic security-testing platform.">
+  <meta property="og:title" content="Samuel Tuck | Systems Builder">
+  <meta property="og:description" content="I design the system, direct AI to build it, and make it prove it works. 1,000+ tests. Every claim tied to a commit.">
+  <meta name="theme-color" content="#0b0908">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container nav-container">
-      <a href="#hero" class="nav-logo">SAMUEL TUCK</a>
-      <nav class="nav-menu" id="navMenu">
-        <a href="#hero" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#process" class="nav-link">Process</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#contact" class="nav-link">Contact</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a href="#top" class="logo">ST<span class="ember">_</span></a>
+      <nav class="nav-menu" id="navMenu" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#method">Method</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact" class="nav-cta">Contact</a>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span>
       </button>
     </div>
   </header>
 
-  <main>
-    <section id="hero" class="section">
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow"><span class="dot"></span> Building in public, shipping on green CI</p>
+          <h1>I don't prompt.<br><span class="hot">I direct.</span></h1>
+          <p class="lede">
+            I'm Samuel Tuck. I design the system, set the rules, and direct AI agents to build it.
+            Then I make it prove it works: tests, CI gates, and evidence tied to a commit.
+          </p>
+          <div class="cta-row">
+            <a href="#mercyzero" class="btn btn-hot">See MERCYZERO</a>
+            <a href="#contact" class="btn btn-ghost">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="terminal" aria-label="Illustrative MERCYZERO run output">
+          <div class="term-bar"><i></i><i></i><i></i><span>mercyzero — illustrative run</span></div>
+          <pre class="term-body" id="termBody"><code>$ npm run ci:gate
+✓ lockfile            ✓ architecture-gate
+✓ module-contract     ✓ build
+✓ unit     999 pass · 0 fail
+✓ integration + e2e (Chromium)
+
+$ run --seed 0x5eed --check cors
+→ adjudicate   FAIL  (cant-touch-this)
+→ replay       identical bytes
+→ shrink       3 → 1 request
+→ fingerprint  sha256:9f2c…a71e
+→ digest       sealed</code></pre>
+        </div>
+      </div>
+
+      <div class="container"><div class="stats" id="stats">
+        <div class="stat"><b data-count="1004">1,004</b><span>tests on the flagship</span></div>
+        <div class="stat"><b data-count="12">12</b><span>workspaces, one adjudicator</span></div>
+        <div class="stat"><b data-count="42" data-suffix="k">42k</b><span>lines of strict TypeScript</span></div>
+        <div class="stat"><b data-count="193">193</b><span>CI tests on SLAav, live Postgres</span></div>
+      </div></div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
       <div class="container">
-        <h1 style="font-size: 3.5rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.05em;">Samuel Tuck</h1>
-        <p style="font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 1.5rem; font-weight: 400;">AI-Assisted Builder, Creator, and Systems Thinker</p>
-        <p style="max-width: 600px; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.125rem;" class="text-matrix">
-          "I use AI tools, structured workflows, and experimentation to turn ideas into functioning digital projects."
+        <p class="kicker">01 / Work</p>
+        <h2>Selected systems</h2>
+
+        <!-- MERCYZERO -->
+        <article class="feature" id="mercyzero">
+          <div class="feature-head">
+            <span class="tag tag-hot">Flagship</span>
+            <span class="tag">TypeScript · Node · Postgres · Fastify</span>
+          </div>
+          <h3 class="feature-title">MERCYZERO</h3>
+          <p class="feature-sub">A deterministic security-testing and evidence platform.</p>
+
+          <div class="feature-grid">
+            <div>
+              <p>
+                Most security scanners give you a list of warnings and a shrug. MERCYZERO runs a seeded,
+                repeatable test against a target. One component, and only one, decides pass or fail. Then it
+                proves the result: it replays the run byte for byte, shrinks the failure to the smallest
+                request that still breaks, fingerprints it, and seals everything into a content-hashed digest.
+              </p>
+              <p>
+                It ships with a Fastify API, a button-only web console, a public demo mode that can't touch a
+                live system, and a separate chaos harness on Neon database branches.
+              </p>
+              <ul class="proof">
+                <li><b>1,004</b> tests: 999 pass, 0 fail, 5 run in the database gate</li>
+                <li><b>Architecture is enforced in CI.</b> Forbidden imports between modules fail the build.</li>
+                <li><b>Deploys only on green.</b> Railway ships <code>main</code> only after the full gate passes.</li>
+                <li><b>Open issues are public.</b> Residual risks live in <code>ISSUES.md</code>, not in a drawer.</li>
+              </ul>
+            </div>
+
+            <figure class="pipeline" aria-label="MERCYZERO pipeline">
+              <figcaption>The pipeline</figcaption>
+              <ol>
+                <li><span>01</span>Deterministic run<em>seeded ledger + HTTP checks</em></li>
+                <li><span>02</span>Adjudicate<em>cant-touch-this: the sole judge</em></li>
+                <li><span>03</span>Replay<em>same seed, same bytes</em></li>
+                <li><span>04</span>Shrink<em>prefix-minimal failing case</em></li>
+                <li><span>05</span>Fingerprint<em>match regressions over time</em></li>
+                <li><span>06</span>Lineage + digest<em>content-hashed facts</em></li>
+                <li><span>07</span>Advisory<em>read-only, never decides</em></li>
+              </ol>
+            </figure>
+          </div>
+
+          <div class="feature-foot">
+            <a class="link" href="https://github.com/swanson420/MERCYZERO" target="_blank" rel="noopener">Source on GitHub →</a>
+          </div>
+        </article>
+
+        <!-- SLAav -->
+        <article class="feature feature-alt" id="slaav">
+          <div class="feature-head">
+            <span class="tag tag-live"><span class="dot"></span> Live</span>
+            <span class="tag">Python · FastAPI · Postgres</span>
+          </div>
+          <h3 class="feature-title">SLAav</h3>
+          <p class="feature-sub">An SLA authority layer for Zendesk-style support teams.</p>
+
+          <div class="feature-grid">
+            <div>
+              <p>
+                When a support SLA is breached, someone pays, and the platform's own logs can be edited.
+                SLAav records every SLA event in an append-only ledger that rejects changes, links each entry
+                into an HMAC-SHA256 hash chain, sorts breaches into five root causes, and gives finance and
+                operations a dollar figure they can defend.
+              </p>
+              <ul class="proof">
+                <li><b>193</b> tests run against a live Postgres in CI</li>
+                <li><b>Hash chain checked independently.</b> A test recomputes every HMAC and requires an exact match.</li>
+                <li><b>14 adversarial ingestion tests.</b> Bad data goes to quarantine and is never quietly fixed up.</li>
+                <li><b>Every claim pinned to a commit and a CI run</b> in its evidence package.</li>
+              </ul>
+            </div>
+
+            <figure class="chain" aria-label="Hash chain illustration">
+              <figcaption>Append-only ledger</figcaption>
+              <div class="block"><small>#1041</small>Breach: Triage Delay<code>h = HMAC(prev ‖ ticket ‖ state)</code></div>
+              <div class="link-line" aria-hidden="true"></div>
+              <div class="block"><small>#1042</small>Intervention routed<code>prev = 7ab1…c03f</code></div>
+              <div class="link-line" aria-hidden="true"></div>
+              <div class="block block-reject"><small>UPDATE #1041</small>Rejected<code>ledger is append-only</code></div>
+            </figure>
+          </div>
+
+          <div class="feature-foot">
+            <a class="link" href="https://github.com/swanson420/SLAav" target="_blank" rel="noopener">Source on GitHub →</a>
+          </div>
+        </article>
+
+        <!-- More -->
+        <div class="cards">
+          <article class="card">
+            <div class="card-top"><h3>Cort3x</h3><span class="tag">Hackathon · Aug 2026</span></div>
+            <p>A safety harness for AI agents. Six modules catch false, stale, or tampered context before an agent acts. Built for the DataHub Agent Hackathon.</p>
+            <p class="mono">Python · TypeScript · C++ · OPA</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>FIREDSQUARED</h3><span class="tag">Fintech</span></div>
+            <p>Delivery-fee reconciliation. Finds where delivery platforms charged more than they should, with an isolated schema so it can share a database safely.</p>
+            <p class="mono">Python · FastAPI · Postgres</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><h3>SCG</h3><span class="tag">Infra</span></div>
+            <p>Orchestrator, persistence, and model proxy. Later merged into Cort3x's TypeScript core.</p>
+            <p class="mono">TypeScript</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section class="section section-dark" id="method">
+      <div class="container">
+        <p class="kicker">02 / Method</p>
+        <h2>How I build with AI</h2>
+        <p class="section-lede">
+          Prompting asks for an answer. Directing sets up a system where the wrong answer can't ship.
+          This is the loop behind every project above.
         </p>
-        <div class="cta-group">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-secondary">Contact</a>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-n">01</span>
+            <h3>Spec the system</h3>
+            <p>I write the architecture, the module boundaries, and the forbidden dependencies before any code exists.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">02</span>
+            <h3>Gates before features</h3>
+            <p>CI checks for architecture, contracts, lockfiles, and tests. Agents work inside rails they can't skip.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">03</span>
+            <h3>Direct the agents</h3>
+            <p>I assign scoped work to AI agents and review every diff against the spec, not against good intentions.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">04</span>
+            <h3>Attack my own work</h3>
+            <p>Adversarial tests and independent verification. If the system says it's correct, a second path checks.</p>
+          </div>
+          <div class="step">
+            <span class="step-n">05</span>
+            <h3>Ship evidence</h3>
+            <p>Claims point to commits and CI runs. Known gaps are written down. Nothing gets waved through.</p>
+          </div>
         </div>
+
+        <blockquote class="motto">"Claims track commits and CI runs, not intent."</blockquote>
       </div>
     </section>
 
-    <section id="about" class="section">
+    <!-- EXPERIENCE (fill from resume) -->
+    <section class="section" id="experience">
       <div class="container">
-        <h2 class="section-title">About</h2>
-        <div class="grid grid-2" style="align-items: start; gap: 3rem;">
+        <p class="kicker">03 / Experience</p>
+        <h2>Background</h2>
+        <div class="exp-grid">
           <div>
-            <p style="font-size: 1.125rem; margin-bottom: 1.5rem; color: var(--text-secondary);">
-              Detailing the intersection of an electronics engineering foundation with rapid AI application development. My background prioritizes structural systems thinking, building logical frameworks, and optimization of end-to-end digital pipelines over manual code construction.
+            <p class="section-lede">
+              I came to software from electronics engineering, and I think about code the way I'd think about a
+              circuit: clear boundaries, known failure modes, and a test for every claim.
             </p>
+            <div class="skills">
+              <span>System architecture</span><span>AI agent orchestration</span><span>TypeScript</span>
+              <span>Python</span><span>Postgres</span><span>FastAPI</span><span>Fastify</span>
+              <span>CI/CD gating</span><span>Security testing</span><span>Railway</span><span>Neon</span>
+              <span>Playwright</span>
+            </div>
           </div>
-          <div>
-            <p style="color: var(--text-muted);">
-              Operating entirely outside the standard ten-year developer paradigm, my process approaches system creation through deterministic rules and workflow configuration. Building solutions centers on orchestration, logical alignment, and rigorous procedural transparency.
-            </p>
-          </div>
+          <ol class="timeline" id="timeline">
+            <li>
+              <time>2026</time>
+              <h3>Independent systems builder</h3>
+              <p>Designed and shipped MERCYZERO, SLAav, Cort3x, and FIREDSQUARED by directing AI agents under CI-enforced specs.</p>
+            </li>
+            <!-- Resume entries go here -->
+          </ol>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <div class="grid grid-3">
-          <article class="card">
-            <div class="card-header">
-              <h3 class="card-title">Portfolio Website</h3>
-              <span class="badge">[Active Production]</span>
-            </div>
-            <p class="card-desc">This site. Proof of optimization, Vercel deployment, and semantic architecture.</p>
-            <div class="flex-wrap">
-              <span class="chip">HTML5</span>
-              <span class="chip">CSS3</span>
-              <span class="chip">Vanilla JS</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3 class="card-title">Website Builder Pipeline</h3>
-              <span class="badge">[Pipeline Prototype]</span>
-            </div>
-            <p class="card-desc">The operational execution engine (GFRED) driving AI generation workflows.</p>
-            <div class="flex-wrap">
-              <span class="chip">Deterministic Logic</span>
-              <span class="chip">System Design</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-header">
-              <h3 class="card-title">Synapse City</h3>
-              <span class="badge">[In Development]</span>
-            </div>
-            <p class="card-desc">Creative world-building, narrative lore, and interactive data structures mapping an original fictional setting.</p>
-            <div class="flex-wrap">
-              <span class="chip">Data Structures</span>
-              <span class="chip">World Building</span>
-            </div>
-          </article>
-
-          <article class="card" style="border-style: dashed;">
-            <div class="card-header">
-              <h3 class="card-title">Future Project</h3>
-              <span class="badge">[In Development]</span>
-            </div>
-            <p class="card-desc">Dynamic placeholder card explicitly styled to show continuous pipeline development.</p>
-            <div class="flex-wrap">
-              <span class="chip">Next Architecture</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="process" class="section">
-      <div class="container">
-        <h2 class="section-title">Process (GFRED Timeline)</h2>
-        <div class="timeline" id="processTimeline">
-          <div class="timeline-node">
-            <span class="node-number">01</span>
-            <h4>Idea</h4>
-          </div>
-          <div class="timeline-node">
-            <span class="node-number">02</span>
-            <h4>Research</h4>
-          </div>
-          <div class="timeline-node">
-            <span class="node-number">03</span>
-            <h4>Planning</h4>
-          </div>
-          <div class="timeline-node">
-            <span class="node-number">04</span>
-            <h4>Prompt Design</h4>
-          </div>
-          <div class="timeline-node">
-            <span class="node-number">05</span>
-            <h4>Prototype</h4>
-          </div>
-          <div class="timeline-node">
-            <span class="node-number">06</span>
-            <h4>Build</h4>
-          </div>
-          <div class="timeline-node">
-            <span class="node-number">07</span>
-            <h4>Test</h4>
-          </div>
-          <div class="timeline-node">
-            <span class="node-number">08</span>
-            <h4>Launch</h4>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="grid grid-2" style="gap: 3rem;">
-          <div>
-            <h3 style="font-size: 1.125rem; margin-bottom: 1.25rem; font-weight: 500;">System & Logic</h3>
-            <div class="flex-wrap">
-              <span class="chip">Prompt Engineering</span>
-              <span class="chip">Workflow Design</span>
-              <span class="chip">UI/UX Thinking</span>
-              <span class="chip">Problem Solving</span>
-              <span class="chip">Information Architecture</span>
-            </div>
-          </div>
-          <div>
-            <h3 style="font-size: 1.125rem; margin-bottom: 1.25rem; font-weight: 500;">Core Execution</h3>
-            <div class="flex-wrap">
-              <span class="chip">AI Tools</span>
-              <span class="chip">HTML</span>
-              <span class="chip">CSS</span>
-              <span class="chip">JavaScript</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experiments" class="section">
-      <div class="container">
-        <h2 class="section-title">Current Experiments</h2>
-        <div class="grid grid-3">
-          <div class="card" style="background-color: var(--bg-tertiary);">
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">AI Website Generation</h3>
-            <p style="font-size: 0.875rem; color: var(--text-muted);">Continuous baseline template validation testing.</p>
-          </div>
-          <div class="card" style="background-color: var(--bg-tertiary);">
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Multi-Agent Systems</h3>
-            <p style="font-size: 0.875rem; color: var(--text-muted);">Orchestrated agent output transformations.</p>
-          </div>
-          <div class="card" style="background-color: var(--bg-tertiary);">
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Interactive Storytelling</h3>
-            <p style="font-size: 0.875rem; color: var(--text-muted);">Dynamic engine structural execution setups.</p>
-          </div>
-          <div class="card" style="background-color: var(--bg-tertiary);">
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Workflow Automation</h3>
-            <p style="font-size: 0.875rem; color: var(--text-muted);">Execution sequencing verification matrices.</p>
-          </div>
-          <div class="card" style="background-color: var(--bg-tertiary);">
-            <h3 style="font-size: 1.125rem; margin-bottom: 0.5rem;">Digital Knowledge Systems</h3>
-            <p style="font-size: 0.875rem; color: var(--text-muted);">Static context indexing configuration systems.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container" style="max-width: 600px;">
-        <h2 class="section-title" style="text-align: center;">Contact</h2>
-        <form id="contactForm" novalidate>
-          <div class="form-group">
-            <label class="form-label" for="formName">Name</label>
-            <input class="form-control" type="text" id="formName" required placeholder=" ">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="formEmail">Email</label>
-            <input class="form-control" type="email" id="formEmail" required placeholder=" ">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="formMessage">Message</label>
-            <textarea class="form-control" id="formMessage" rows="5" required placeholder=" "></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Message</button>
-          <div class="form-status-overlay" id="formStatus"></div>
-        </form>
-        <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 3rem;">
-          <a href="#" class="text-muted" style="font-size: 0.875rem;">GitHub</a>
-          <a href="#" class="text-muted" style="font-size: 0.875rem;">LinkedIn</a>
-          <a href="#" class="text-muted" style="font-size: 0.875rem;">Email</a>
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="glow glow-low" aria-hidden="true"></div>
+      <div class="container contact-inner">
+        <p class="kicker">04 / Contact</p>
+        <h2>Have a system that needs to be <span class="hot">provably right</span>?</h2>
+        <p class="section-lede">I'm open to roles and projects in AI-directed engineering, security tooling, and verification-heavy backends.</p>
+        <div class="cta-row center">
+          <a class="btn btn-hot" href="https://github.com/swanson420" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="#" data-todo="linkedin">LinkedIn</a>
+          <a class="btn btn-ghost" href="#" data-todo="email">Email</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer style="padding: 3rem 0; border-top: 1px solid var(--accent-border); text-align: center;">
-    <div class="container">
-      <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1.5rem;">&copy; 2026 Samuel Tuck</p>
-      <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-        <a href="#hero" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Home</a>
-        <a href="#about" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">About</a>
-        <a href="#projects" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Projects</a>
-        <a href="#process" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Process</a>
-        <a href="#skills" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Skills</a>
-        <a href="#contact" style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted);">Contact</a>
-      </div>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 Samuel Tuck</span>
+      <span class="mono">Static HTML, CSS and JS. No framework.</span>
     </div>
   </footer>
 
   <script src="main.js"></script>
 </body>
-  </html>
-  
+</html>
