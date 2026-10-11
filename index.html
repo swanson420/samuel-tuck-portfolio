@@ -144,7 +144,8 @@ $ run --seed 0x5eed --check cors
         <!-- SLAav -->
         <article class="feature feature-alt" id="slaav">
           <div class="feature-head">
-            <span class="tag tag-live"><span class="dot"></span> Live</span>
+            <span class="tag tag-live"><span class="dot"></span> Deployed</span>
+            <span class="tag">Backend MVP</span>
             <span class="tag">Python · FastAPI · Postgres</span>
           </div>
           <h3 class="feature-title">SLAav</h3>
@@ -156,7 +157,8 @@ $ run --seed 0x5eed --check cors
                 When a support SLA is breached, someone pays, and the platform's own logs can be edited.
                 SLAav records every SLA event in an append-only ledger that rejects changes, links each entry
                 into an HMAC-SHA256 hash chain, sorts breaches into five root causes, and gives finance and
-                operations a dollar figure they can defend.
+                operations a dollar figure they can defend. Today it's a proven backend: the finance and
+                operations views are API endpoints, and the screens come next.
               </p>
               <ul class="proof">
                 <li><b>193</b> tests run against a live Postgres in CI</li>
@@ -179,9 +181,9 @@ $ run --seed 0x5eed --check cors
 
         <!-- More -->
         <div class="cards">
-          <article class="card card-hot">
-            <div class="card-top"><h3>Agent Sully</h3><span class="tag tag-live"><span class="dot"></span> Live</span></div>
-            <p>A negotiation agent for SaaS vendor renewals. Every dollar comes from a hash-chained ledger, risky moves need a human sign-off, and the model is never allowed to invent savings. 213 tests.</p>
+          <article class="card">
+            <div class="card-top"><h3>Agent Sully</h3><span class="tag">MVP · Hackathon</span></div>
+            <p>A negotiation agent for SaaS vendor renewals. Every dollar comes from a hash-chained ledger, risky moves need a human sign-off, and the model is never allowed to invent savings. Early-stage agent, 213 tests.</p>
             <p class="mono">Python · Gemini · Google ADK</p>
             <div class="card-links">
               <a class="link" href="https://negotiation-agent-production-ef14.up.railway.app" target="_blank" rel="noopener">Open demo →</a>
@@ -197,11 +199,18 @@ $ run --seed 0x5eed --check cors
             </div>
           </article>
           <article class="card">
-            <div class="card-top"><h3>FIREDSQUARED</h3><span class="tag">Fintech</span></div>
+            <div class="card-top"><h3>FIREDSQUARED</h3><span class="tag">Backend MVP</span></div>
             <p>Delivery-fee reconciliation. Finds where delivery platforms charged more than they should, with an isolated schema so it can share a database safely.</p>
             <p class="mono">Python · FastAPI · Postgres</p>
           </article>
 
+        </div>
+
+        <div class="b2f">
+          <p class="kicker">Why most of these are backends</p>
+          <p>I build <b>back to front</b>. The core has to prove itself first, with tests, CI, and a ledger
+          that can't lie, before it gets a face. Every project here builds and passes its tests.
+          MERCYZERO is the one that has earned its front end so far, so that's where my focus is.</p>
         </div>
       </div>
     </section>
