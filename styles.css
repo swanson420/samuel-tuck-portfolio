@@ -304,6 +304,13 @@ figcaption { font-family: var(--mono); font-size: .75rem; color: var(--muted); t
 .edu b { color: var(--text); }
 .lede b { color: var(--text); font-weight: 500; }
 
+.btn-sm { padding: 9px 18px; font-size: .9rem; }
+.feature-foot { align-items: center; }
+.card { display: flex; flex-direction: column; }
+.card .link { margin-top: 14px; font-size: .82rem; }
+.card-hot { border-color: rgba(255, 77, 28, .35); }
+.foot-link:hover { color: var(--hot-2); }
+
 /* Reveal */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.in { opacity: 1; transform: none; }
