@@ -40,11 +40,11 @@
           <span class="tag">Python · FastAPI · Postgres</span>
         </div>
         <h1 class="case-title">SLAav</h1>
-        <p class="lede">An SLA authority layer for any ticketing platform.</p>
+        <p class="lede">An SLA authority layer for any support platform: Zendesk, Freshdesk, ServiceNow, Jira Service Management or Help Scout.</p>
         <div class="cta-row">
           <a class="btn btn-hot btn-sm" href="https://slaav-production-17a9.up.railway.app/dashboard" target="_blank" rel="noopener">Open the dashboard →</a>
         </div>
-        <p class="case-note"><b>Status:</b> MVP, deployed. Live data sits behind an API key; the dashboard's &ldquo;Show sample data&rdquo; button shows the layout without one. The source code is private, and a walkthrough is available on request.</p>
+        <p class="case-note"><b>Status:</b> MVP, deployed behind an API key. It builds and its full test suite passes. A browser dashboard shows the finance and operations views and looks up per-ticket certificates; its &ldquo;Show sample data&rdquo; button works without a key. The source code is private; a walkthrough is available on request.</p>
       </header>
 
       <section class="case-sec">
@@ -79,7 +79,9 @@
             <tr><th>Root-cause routing</th><td>Pending State Abuse, Routing Ping-Pong, Triage Delay, Agent Timeout, or System Unavailable</td></tr>
             <tr><th>Interventions</th><td>A corrective action and priority per root cause, recorded as a signed ledger entry. Proposals only; nothing is written back to the platform.</td></tr>
             <tr><th>Data erasure</th><td>A single, audited way to blank a record's personal data, as GDPR-style requests require, while every other change stays blocked.</td></tr>
-            <tr><th>Dashboard + certificates</th><td>Exposure, breaches and root causes in the browser, plus per-ticket cryptographic proof of the ledger's state</td></tr>
+            <tr><th>CFO view (API + dashboard)</th><td>Active breaches, total financial exposure, and breakdowns by severity and root cause</td></tr>
+            <tr><th>COO view (API + dashboard)</th><td>Operational attribution, time spent in pending, and triage completion</td></tr>
+            <tr><th>Certificates</th><td>Per-ticket cryptographic proof of the ledger's state, with a lookup in the dashboard</td></tr>
           </table>
         </div>
       </section>
@@ -87,7 +89,7 @@
       <section class="case-sec">
         <h2>How it's verified</h2>
         <ul class="proof">
-          <li><b>330 tests</b> run in CI against a live Postgres database on every push and pull request, not mocks.</li>
+          <li><b>343 tests</b> run in CI on every push and pull request, against a live Postgres database, not mocks.</li>
           <li><b>The hash chain is checked independently.</b> A test recomputes each HMAC from scratch and requires an exact match with the stored hash.</li>
           <li><b>14 adversarial ingestion tests.</b> Malformed or hostile data goes to quarantine and is never quietly &ldquo;fixed up.&rdquo;</li>
           <li><b>Backups are proven, not assumed.</b> An end-to-end test restores a real copy, damages it nine different ways, and requires the check to catch every one.</li>
