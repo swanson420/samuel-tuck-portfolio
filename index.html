@@ -70,7 +70,7 @@ $ run --seed 0x5eed --check cors
       <div class="container"><div class="stats" id="stats">
         <div class="stat"><b data-count="1004">1,004</b><span>tests on the flagship</span></div>
                 <div class="stat"><b data-count="12" data-suffix=" yrs">12 yrs</b><span>high-volume operations</span></div>
-        <div class="stat"><b data-count="193">193</b><span>CI tests on SLAav</span></div>
+        <div class="stat"><b data-count="330">330</b><span>CI tests on SLAav</span></div>
         <div class="stat"><b data-count="68" data-suffix="k">68k</b><span>lines directed &amp; verified, 8 languages</span></div>
         <div class="stat"><b>100s</b><span>employees led across restaurant operations</span></div>
       </div></div>
@@ -147,11 +147,11 @@ $ run --seed 0x5eed --check cors
         <article class="feature feature-alt" id="slaav">
           <div class="feature-head">
             <span class="tag tag-live"><span class="dot"></span> Deployed</span>
-            <span class="tag">Backend MVP</span>
+            <span class="tag">MVP</span>
             <span class="tag">Python · FastAPI · Postgres</span>
           </div>
           <h3 class="feature-title">SLAav</h3>
-          <p class="feature-sub">An SLA authority layer for Zendesk-style support teams.</p>
+          <p class="feature-sub">An SLA authority layer for any ticketing platform.</p>
 
           <div class="feature-grid">
             <div>
@@ -159,18 +159,15 @@ $ run --seed 0x5eed --check cors
                 When a support SLA is breached, someone pays, and the platform's own logs can be edited.
                 SLAav records every SLA event in an append-only ledger that rejects changes, links each entry
                 into an HMAC-SHA256 hash chain, sorts breaches into five root causes, and gives finance and
-                operations a dollar figure they can defend. Today it's a proven backend: the finance and
-                operations views are API endpoints, and the screens come next.
+                operations a dollar figure they can defend. It works with Zendesk, Freshdesk, ServiceNow,
+                Jira Service Management and Help Scout, and now has a browser dashboard for the numbers.
               </p>
               <ul class="proof">
-                <li><b>193</b> tests run against a live Postgres in CI</li>
+                <li><b>330</b> tests run against a live Postgres in CI on every push</li>
                 <li><b>Hash chain checked independently.</b> A test recomputes every HMAC and requires an exact match.</li>
                 <li><b>14 adversarial ingestion tests.</b> Bad data goes to quarantine and is never quietly fixed up.</li>
                 <li><b>Every claim pinned to a commit and a CI run</b> in its evidence package.</li>
               </ul>
-              <div class="feature-foot">
-                <a class="link" href="slaav.html">Full write-up →</a>
-              </div>
             </div>
 
             <figure class="chain" aria-label="Hash chain illustration">
@@ -181,6 +178,20 @@ $ run --seed 0x5eed --check cors
               <div class="link-line" aria-hidden="true"></div>
               <div class="block block-reject"><small>UPDATE #1041</small>Rejected<code>ledger is append-only</code></div>
             </figure>
+          </div>
+
+          <div class="bugs">
+            <p class="bugs-title">Defects I caught by making the tests ask harder questions</p>
+            <div class="bug-grid">
+              <div class="bug"><span class="sev sev-high">HIGH</span><h4>Revoking one key could revoke the wrong one</h4><p>The key ID was matched as a pattern, so a wildcard could hit an arbitrary key. Now it must match exactly.</p></div>
+              <div class="bug"><span class="sev sev-high">HIGH</span><h4>Data erasure had never worked</h4><p>The ledger's own append-only rule blocked the erasure path, so a GDPR-style request could never succeed. Fixed without loosening anything else.</p></div>
+              <div class="bug"><span class="sev">MED</span><h4>The backup check missed 7 of 9 kinds of damage</h4><p>A restored copy could be quietly wrong and still pass. It now compares every table, and CI proves each case fails.</p></div>
+            </div>
+          </div>
+
+          <div class="feature-foot">
+            <a class="btn btn-ghost btn-sm" href="https://slaav-production-17a9.up.railway.app/dashboard" target="_blank" rel="noopener">Open the dashboard <span class="key-note">· sample data needs no key</span></a>
+            <a class="link" href="slaav.html">Full write-up →</a>
           </div>
         </article>
 
@@ -215,7 +226,7 @@ $ run --seed 0x5eed --check cors
           <p class="kicker">Why most of these are backends</p>
           <p>I build <b>back to front</b>. The core has to prove itself first, with tests, CI, and a ledger
           that can't lie, before it gets a face. Every project here builds and passes its tests.
-          MERCYZERO is the one that has earned its front end so far, so that's where my focus is.</p>
+          MERCYZERO earned its full front end first, and SLAav has just earned its dashboard.</p>
         </div>
       </div>
     </section>
@@ -362,8 +373,8 @@ $ run --seed 0x5eed --check cors
               </li>
               <li>
                 <time>2026</time>
-                <h3>Backend MVPs &amp; hackathons</h3>
-                <p>SLAav and FIREDSQUARED as proven backends. Cort3x and Agent Sully for hackathons, with strategy-tuned Goggles. Every one builds and passes its tests.</p>
+                <h3>SLAav, MVPs &amp; hackathons</h3>
+                <p>SLAav grew from a proven backend into an MVP with a dashboard, support for five ticketing platforms, and 330 tests. FIREDSQUARED is a backend MVP. Cort3x and Agent Sully were built for hackathons with strategy-tuned Goggles. Every one builds and passes its tests.</p>
               </li>
             </ol>
             <div class="skills">

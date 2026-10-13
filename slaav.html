@@ -36,37 +36,50 @@
       <header class="case-head">
         <div class="feature-head">
           <span class="tag tag-live"><span class="dot"></span> Deployed</span>
-          <span class="tag">Backend MVP</span>
+          <span class="tag">MVP</span>
           <span class="tag">Python · FastAPI · Postgres</span>
         </div>
         <h1 class="case-title">SLAav</h1>
-        <p class="lede">An SLA authority layer for Zendesk-style support teams.</p>
-        <p class="case-note"><b>Status:</b> backend MVP, deployed behind an API key. It builds and its full test suite passes. The finance and operations views are API endpoints for now; the screens come next, once the core has proven itself. The source code is private, and a walkthrough is available on request.</p>
+        <p class="lede">An SLA authority layer for any ticketing platform.</p>
+        <div class="cta-row">
+          <a class="btn btn-hot btn-sm" href="https://slaav-production-17a9.up.railway.app/dashboard" target="_blank" rel="noopener">Open the dashboard →</a>
+        </div>
+        <p class="case-note"><b>Status:</b> MVP, deployed. Live data sits behind an API key; the dashboard's &ldquo;Show sample data&rdquo; button shows the layout without one. The source code is private, and a walkthrough is available on request.</p>
       </header>
 
       <section class="case-sec">
-        <p class="case-p">When a support SLA is breached, someone pays, and the ticketing platform's own logs can be edited after the fact. SLAav keeps an independent, tamper-evident record of every SLA event. It works out <em>why</em> each breach happened, routes a fix, and gives finance and operations a dollar figure they can defend.</p>
+        <p class="case-p">When a support SLA is breached, someone pays, and the ticketing platform's own logs can be edited after the fact. SLAav keeps an independent, tamper-evident record of every SLA event. It works out <em>why</em> each breach happened, proposes a fix, and gives finance and operations a dollar figure they can defend.</p>
+      </section>
+
+      <section class="case-sec">
+        <h2>The dashboard</h2>
+        <figure class="shot">
+          <figcaption>Exposure in dollars, breaches by priority and root cause, and a per-ticket certificate lookup. This screenshot uses the built-in sample data, which is clearly labelled as made up.</figcaption>
+          <img src="showcase/slaav/screenshots/dashboard.png" alt="The SLAav dashboard showing total exposure, active breaches, and bar charts by root cause and priority" loading="lazy" width="1400" height="1576">
+        </figure>
       </section>
 
       <section class="case-sec">
         <h2>How it works</h2>
         <figure class="pipeline">
           <ol>
-            <li><span>01</span>Validate<em>bad data goes to quarantine, never &ldquo;fixed&rdquo;</em></li>
-            <li><span>02</span>Record<em>append-only ledger, HMAC-SHA256 chain</em></li>
-            <li><span>03</span>Diagnose<em>one of five root causes</em></li>
-            <li><span>04</span>Intervene<em>corrective action + priority</em></li>
-            <li><span>05</span>Report<em>CFO / COO views, per-ticket certificates</em></li>
+            <li><span>01</span>Translate<em>each platform's statuses into one vocabulary</em></li>
+            <li><span>02</span>Validate<em>bad data goes to quarantine, never &ldquo;fixed&rdquo;</em></li>
+            <li><span>03</span>Record<em>append-only ledger, HMAC-SHA256 chain</em></li>
+            <li><span>04</span>Diagnose<em>one of five root causes</em></li>
+            <li><span>05</span>Intervene<em>signed corrective proposal + priority</em></li>
+            <li><span>06</span>Report<em>dashboard, CFO / COO views, certificates</em></li>
           </ol>
         </figure>
         <div class="table-wrap">
           <table class="case-table">
+            <tr><th>Any ticketing platform</th><td>Zendesk, Freshdesk, ServiceNow, Jira Service Management and Help Scout, plus custom mappings. Unknown statuses are rejected, never guessed.</td></tr>
             <tr><th>Append-only ledger</th><td>A Postgres ledger with an immutability trigger. Any attempt to edit or delete history is rejected by the database itself.</td></tr>
             <tr><th>Keyed hash chain</th><td>Every entry is linked to the one before it with HMAC-SHA256. Forging an entry requires the signing key.</td></tr>
             <tr><th>Root-cause routing</th><td>Pending State Abuse, Routing Ping-Pong, Triage Delay, Agent Timeout, or System Unavailable</td></tr>
-            <tr><th>CFO view (API)</th><td>Active breaches, total financial exposure, and breakdowns by severity and root cause</td></tr>
-            <tr><th>COO view (API)</th><td>Operational attribution, time spent in pending, and triage completion</td></tr>
-            <tr><th>Certificates</th><td>Per-ticket cryptographic proof of the ledger's state</td></tr>
+            <tr><th>Interventions</th><td>A corrective action and priority per root cause, recorded as a signed ledger entry. Proposals only; nothing is written back to the platform.</td></tr>
+            <tr><th>Data erasure</th><td>A single, audited way to blank a record's personal data, as GDPR-style requests require, while every other change stays blocked.</td></tr>
+            <tr><th>Dashboard + certificates</th><td>Exposure, breaches and root causes in the browser, plus per-ticket cryptographic proof of the ledger's state</td></tr>
           </table>
         </div>
       </section>
@@ -74,17 +87,28 @@
       <section class="case-sec">
         <h2>How it's verified</h2>
         <ul class="proof">
-          <li><b>193 tests</b> run in CI against a live Postgres database, not mocks.</li>
+          <li><b>330 tests</b> run in CI against a live Postgres database on every push and pull request, not mocks.</li>
           <li><b>The hash chain is checked independently.</b> A test recomputes each HMAC from scratch and requires an exact match with the stored hash.</li>
           <li><b>14 adversarial ingestion tests.</b> Malformed or hostile data goes to quarantine and is never quietly &ldquo;fixed up.&rdquo;</li>
-          <li><b>Load tested against real production, three times.</b> Database pool use peaked at 90% and 75% under normal settings without tripping the circuit breaker. A third session shrank the pool on purpose to force the breaker open, which confirmed that it degrades gracefully and recovers as designed.</li>
-          <li><b>Every claim is pinned to a commit and a CI run</b> in an evidence package.</li>
+          <li><b>Backups are proven, not assumed.</b> An end-to-end test restores a real copy, damages it nine different ways, and requires the check to catch every one.</li>
+          <li><b>Load tested against real production, three times,</b> including once with the database pool shrunk on purpose to force the circuit breaker open and confirm it recovers.</li>
         </ul>
       </section>
 
       <section class="case-sec">
+        <h2>Defects caught</h2>
+        <p class="case-p">These came from writing tests that ask harder questions than &ldquo;does it run&rdquo;. All are fixed, and each fix has a test that pins it.</p>
+        <div class="bug-grid">
+          <div class="bug"><span class="sev sev-high">HIGH</span><h4>Revoking one key could revoke the wrong one</h4><p>The key ID was matched as a pattern, so a wildcard could hit an arbitrary key. Now it must match exactly.</p></div>
+          <div class="bug"><span class="sev sev-high">HIGH</span><h4>Data erasure had never worked</h4><p>The ledger's own append-only rule blocked the erasure path, so it could never succeed. Now exactly one change is allowed: blanking a record once.</p></div>
+          <div class="bug"><span class="sev">MED</span><h4>The backup check missed 7 of 9 kinds of damage</h4><p>A restored copy with edited history or a changed dollar amount could still pass. It now compares every table in full.</p></div>
+          <div class="bug"><span class="sev sev-low">CI</span><h4>Tests weren't running on changes</h4><p>CI only ran when started by hand. It now runs on every push and pull request.</p></div>
+        </div>
+      </section>
+
+      <section class="case-sec">
         <h2>Limits, stated openly</h2>
-        <p class="case-p">Not yet claimed: a production scheduler, an automated repeatable load-test suite, a key-rotation drill, a Bitcoin-confirmed timestamp anchor, a public third-party proof endpoint, or multi-instance high availability.</p>
+        <p class="case-p">Not yet claimed: a backup restore drill against production, a production scheduler, an automated repeatable load-test suite, a key-rotation drill, a Bitcoin-confirmed timestamp anchor, a public third-party proof endpoint, or multi-instance high availability.</p>
         <blockquote class="motto">&ldquo;Claims track commits and CI runs, not intent.&rdquo;</blockquote>
       </section>
 
