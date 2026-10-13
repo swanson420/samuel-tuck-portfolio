@@ -13,7 +13,7 @@ I build software by steering AI with my own prompting method, **Goggles & Lens**
 | Project | What it is | Links |
 |---|---|---|
 | **MERCYZERO** ⭐ | Deterministic security-testing platform. Seeded runs, a single judge, replay, shrink, and evidence-backed reports. 1,004 tests. | [Live demo](https://mercyzero-demo-production.up.railway.app) · [Write-up](https://samuel-tuck-portfolio.vercel.app/mercyzero.html) |
-| **SLAav** · *MVP* | SLA authority layer for any ticketing platform. Append-only ledger, HMAC hash chain, root-cause routing and a browser dashboard. 343 tests. | [Write-up](https://samuel-tuck-portfolio.vercel.app/slaav.html) |
+| **SLAav** · *MVP* | SLA authority layer for any ticketing platform. Append-only ledger, HMAC hash chain, root-cause routing and a browser dashboard. 347 tests. | [Write-up](https://samuel-tuck-portfolio.vercel.app/slaav.html) |
 | **Agent Sully** · *MVP* | Negotiation agent for SaaS renewals. Every dollar comes from a hash-chained ledger, and the model can't invent savings. | [Live demo](https://negotiation-agent-production-ef14.up.railway.app) · [Repo](https://github.com/swanson420/AGENT_SULLY) |
 | **Cort3x** | Safety framework for AI agents, built for Devpost's "Build with DataHub" hackathon. Six modules. | [Repo](https://github.com/swanson420/CORT3X) |
 

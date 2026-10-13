@@ -44,7 +44,7 @@
         <div class="cta-row">
           <a class="btn btn-hot btn-sm" href="https://slaav-production-17a9.up.railway.app/dashboard" target="_blank" rel="noopener">Open the dashboard →</a>
         </div>
-        <p class="case-note"><b>Status:</b> MVP, deployed behind an API key. It builds and its full test suite passes. A browser dashboard shows the finance and operations views and looks up per-ticket certificates; its &ldquo;Show sample data&rdquo; button works without a key. The source code is private; a walkthrough is available on request.</p>
+        <p class="case-note"><b>Status:</b> MVP, deployed behind an API key, with its own database. It builds and its full test suite passes. A browser dashboard shows the finance and operations views and looks up per-ticket certificates; its &ldquo;Show sample data&rdquo; button works without a key. The source code is private; a walkthrough is available on request.</p>
       </header>
 
       <section class="case-sec">
@@ -89,7 +89,7 @@
       <section class="case-sec">
         <h2>How it's verified</h2>
         <ul class="proof">
-          <li><b>343 tests</b> run in CI on every push and pull request, against a live Postgres database, not mocks.</li>
+          <li><b>347 tests</b> run in CI on every push and pull request, against a live Postgres 18 database, not mocks.</li>
           <li><b>The hash chain is checked independently.</b> A test recomputes each HMAC from scratch and requires an exact match with the stored hash.</li>
           <li><b>14 adversarial ingestion tests.</b> Malformed or hostile data goes to quarantine and is never quietly &ldquo;fixed up.&rdquo;</li>
           <li><b>Backups are proven, not assumed.</b> An end-to-end test restores a real copy, damages it nine different ways, and requires the check to catch every one.</li>
